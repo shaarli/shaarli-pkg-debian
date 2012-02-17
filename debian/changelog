@@ -1,0 +1,5 @@
+shaarli (0.0.38beta-1) unstable; urgency=low
+
+  * Initial release (Closes: #654814)
+
+ -- Emilien Klein <emilien+debian@klein.st>  Fri, 17 Feb 2012 21:32:58 +0100

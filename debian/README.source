@@ -1,0 +1,21 @@
+Shaarli for Debian
+------------------
+
+Shaarli can be downloaded from its webpage:
+http://sebsauvage.net/wiki/doku.php?id=php:shaarli
+
+The regular download link looks like this:
+http://sebsauvage.net/files/shaarli_0.0.33beta.zip
+
+However, that archive is not suitable for Debian packaging. In particular,
+it includes minified JavaScript files for jQuery, and not the actual sources.
+This is in violation of DFSG §2. However, I've worked with upstream to get
+this rectified. There is thus a specific archive made for Debian packaging,
+where the jQuery files are removed, and jQuery's CDN is used instead. Those
+archives (using the same version number) are to be found at the following
+location:
+http://sebsauvage.net/files/for_debian/shaarli_0.0.33beta.tar.gz
+
+The debian/watch file has been adapted to download the Debian-specific
+tarball (note that the original archive is a zipfile)
+

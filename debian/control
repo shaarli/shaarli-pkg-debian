@@ -1,0 +1,18 @@
+Source: shaarli
+Section: web
+Priority: optional
+Maintainer: Emilien Klein <emilien+debian@klein.st>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+Homepage: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
+Vcs-Browser: http://bazaar.launchpad.net/~emilien-klein/shaarli/debian/files
+Vcs-Bzr: lp:~emilien-klein/shaarli/debian
+
+Package: shaarli
+Architecture: all
+Depends: libapache2-mod-php5 | libapache2-mod-php5filter | php5-cgi | php5-fpm | php5, php5-gd, ${misc:Depends}, libjs-jquery, libjs-jquery-ui, libjs-jquery-lazyload
+Recommends: apache2 | httpd
+Description: Personal, minimalist, super-fast and no-database Delicious clone
+ Saving simple links should not be a complicated heavy thing. Shaarli
+ is simple, but it does the job and does it well. And your data is not
+ hosted on a foreign server, but on your server.

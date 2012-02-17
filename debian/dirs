@@ -1,0 +1,4 @@
+/var/lib/shaarli/data
+/var/cache/shaarli/cache
+/var/cache/shaarli/tmp
+

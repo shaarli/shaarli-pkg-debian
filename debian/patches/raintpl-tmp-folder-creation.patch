@@ -1,0 +1,12 @@
+Use the tmp folder defined earlier for RainTPL
+--- a/index.php
++++ b/index.php
+@@ -60,7 +60,7 @@
+ header("Cache-Control: post-check=0, pre-check=0", false);
+ header("Pragma: no-cache");
+ if (!is_dir($GLOBALS['config']['DATADIR'])) { mkdir($GLOBALS['config']['DATADIR'],0705); chmod($GLOBALS['config']['DATADIR'],0705); }
+-if (!is_dir('tmp')) { mkdir('tmp',0705); chmod('tmp',0705); } // For RainTPL temporary files.
++if (!is_dir(raintpl::$cache_dir)) { mkdir(raintpl::$cache_dir,0705); chmod(raintpl::$cache_dir,0705); } // For RainTPL temporary files.
+ if (!is_file($GLOBALS['config']['DATADIR'].'/.htaccess')) { file_put_contents($GLOBALS['config']['DATADIR'].'/.htaccess',"Allow from none\nDeny from all\n"); } // Protect data files.
+ if ($GLOBALS['config']['ENABLE_LOCALCACHE'])
+ {
