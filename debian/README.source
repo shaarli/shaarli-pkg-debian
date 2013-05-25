@@ -27,10 +27,11 @@ needed to package a new upstream version.
 
 One-time setup steps: get your copy of the Debian source package from Git, and
 the Debian files for the latest package:
+  $ apt-get source shaarli
   $ git clone ssh://<user>@git.debian.org/git/collab-maint/shaarli.git
+  $ cd shaarli
   $ git checkout -b pristine-tar remotes/origin/pristine-tar
   $ git checkout -b upstream remotes/origin/upstream
-  $ apt-get source shaarli
 
 From inside the shaarli folder:
 1. Retrieve the new upstream tarball and update the new upstream source into
