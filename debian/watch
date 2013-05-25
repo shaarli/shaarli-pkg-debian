@@ -1,3 +1,4 @@
 version=3
-opts="downloadurlmangle=s/\/shaarli_(.*)\.zip/\/for_debian\/shaarli_$1\.tar\.gz/,filenamemangle=s/(.*)shaarli_(.*)\.zip/shaarli-$2\.tar\.gz/" http://sebsauvage.net/wiki/doku.php?id=php:shaarli http://sebsauvage.net/files/shaarli_(.*)\.zip debian uupdate
 
+opts=dversionmangle=s/~beta~dfsg\d+$/beta/ \
+  http://sebsauvage.net/wiki/doku.php?id=php:shaarli http://sebsauvage.net/files/shaarli_(.*)\.zip

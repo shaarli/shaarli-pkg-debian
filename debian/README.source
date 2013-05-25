@@ -4,20 +4,37 @@ Shaarli for Debian
 Shaarli can be downloaded from its webpage:
 http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 
-The regular download link looks like this:
-http://sebsauvage.net/files/shaarli_0.0.33beta.zip
+The zipfile which is provided there is not suitable for debian packaging
+directly, so there is a script to get it and turn it into a DFSG-complying
+archive.
 
-However, that archive is not suitable for Debian packaging. In particular,
-it includes minified JavaScript files for jQuery, and not the actual sources.
-This is in violation of DFSG §2. However, I've worked with upstream to get
-this rectified. There is thus a specific archive made for Debian packaging,
-where the jQuery files are removed, and jQuery's CDN is used instead. Those
-archives (using the same version number) are to be found at the following
-location:
-http://sebsauvage.net/files/for_debian/shaarli_0.0.33beta.tar.gz
+To use this script, launch 'sh debian/downloadNewest.sh' from the root
+directory of the package. The effect of this script is to uncompress the
+zipfile, remove unnecessary files (mainly third party sources which are
+packaged elsewhere in Debian), and create the standard orig.tar.gz archive
+for debian.
 
-The debian/watch file has been adapted to download the Debian-specific
-tarball (note that the original archive is a zipfile)
+This should issue something like that on success:
+
+-------------------
+$ sh debian/downloadNewest.sh 
+attempting to get a newer version of shaarli
+shaarli: Newer version (0.0.41beta) available on remote site:
+  http://sebsauvage.net/files/shaarli_0.0.41beta.zip
+  (local version is 0.0.38~beta~dfsg1, mangled local version number 0.0.38beta)
+shaarli_0.0.41beta/:  ucsize 306 <> csize 0 for STORED entry
+         continuing with "compressed" size value
+shaarli_0.0.41beta/images/:  ucsize 680 <> csize 0 for STORED entry
+         continuing with "compressed" size value
+shaarli_0.0.41beta/inc/:  ucsize 272 <> csize 0 for STORED entry
+         continuing with "compressed" size value
+shaarli_0.0.41beta/tpl/:  ucsize 816 <> csize 0 for STORED entry
+         continuing with "compressed" size value
+extracted the newest version into ../shaarli-0.0.41~beta~dfsg1
+-------------------
+
+The DFSG-complying tree is in the directory ../shaarli-x.y.z~beta~dfsg1
+and its archive is at ../shaarli_x.y.z~beta~dfsg1.orig.tar.gz
 
 Packaging a new version
 -----------------------

@@ -1,4 +1,4 @@
-shaarli (0.0.38beta-1) unstable; urgency=low
+shaarli (0.0.38~beta~dfsg1-1) unstable; urgency=low
 
   * Initial release (Closes: #654814)
 
