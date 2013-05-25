@@ -1,0 +1,5 @@
+debian/files
+debian/shaarli.debhelper.log
+debian/shaarli.substvars
+debian/shaarli/
+
