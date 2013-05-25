@@ -19,7 +19,8 @@ Comment: The license is specified as MIT. This version of MIT is identic to
  the Expat license.
 
 Files: debian/*
-Copyright: 2012, Emilien Klein <emilien+debian@klein.st>
+Copyright: 2012-2013, Emilien Klein <emilien+debian@klein.st>
+           2013 Georges Khaznadar <georgesk@debian.org>
 License: Zlib
 
 License: Zlib
