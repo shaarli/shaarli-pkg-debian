@@ -1,5 +1,5 @@
-shaarli (0.0.38~beta~dfsg1-1) unstable; urgency=low
+shaarli (0.0.41~beta~dfsg1-1) unstable; urgency=low
 
-  * Initial release (Closes: #654814)
+  * Initial release (Closes: #654814 and #709644)
 
- -- Emilien Klein <emilien+debian@klein.st>  Fri, 17 Feb 2012 21:32:58 +0100
+ -- Emilien Klein <emilien+debian@klein.st>  Sun, 26 May 2013 03:55:56 +0200
