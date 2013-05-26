@@ -1,7 +1,6 @@
 index.php /usr/share/shaarli
 images/ /usr/share/shaarli
 inc/shaarli.css /usr/share/shaarli/inc
-inc/rain.tpl.class.php /usr/share/shaarli/inc
 tpl/ /usr/share/shaarli
 debian/apache.conf /etc/shaarli
 
