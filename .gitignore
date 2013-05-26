@@ -3,3 +3,9 @@ debian/shaarli.debhelper.log
 debian/shaarli.substvars
 debian/shaarli/
 
+# Ignore data/, tmp/, cache/ and pagecache/
+data/
+tmp/
+cache/
+pagecache/
+
