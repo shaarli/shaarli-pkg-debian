@@ -6,30 +6,30 @@ Sets the location of the data, cache and tmp directories to
 instead of their paths being relative to the application's directory.
 --- a/index.php
 +++ b/index.php
-@@ -8,7 +8,7 @@
- // (but autocomplete fields will only work if you have php 5.2.x)
+@@ -6,7 +6,7 @@
+ // Requires: php 5.1.x  (but autocomplete fields will only work if you have php 5.2.x)
  // -----------------------------------------------------------------------------------------------
- // User config:
+ // Hardcoded parameter (These parameters can be overwritten by creating the file /config/options.php)
 -$GLOBALS['config']['DATADIR'] = 'data'; // Data subdirectory
 +$GLOBALS['config']['DATADIR'] = '/var/lib/shaarli/data'; // Data subdirectory
  $GLOBALS['config']['CONFIG_FILE'] = $GLOBALS['config']['DATADIR'].'/config.php'; // Configuration file (user login/password)
  $GLOBALS['config']['DATASTORE'] = $GLOBALS['config']['DATADIR'].'/datastore.php'; // Data storage file.
  $GLOBALS['config']['LINKS_PER_PAGE'] = 20; // Default links per page.
-@@ -18,7 +18,7 @@
+@@ -16,7 +16,7 @@
  $GLOBALS['config']['OPEN_SHAARLI'] = false; // If true, anyone can add/edit/delete links without having to login
  $GLOBALS['config']['HIDE_TIMESTAMPS'] = false; // If true, the moment when links were saved are not shown to users that are not logged in.
  $GLOBALS['config']['ENABLE_THUMBNAILS'] = true; // Enable thumbnails in links.
 -$GLOBALS['config']['CACHEDIR'] = 'cache'; // Cache directory for thumbnails for SLOW services (like flickr)
 +$GLOBALS['config']['CACHEDIR'] = '/var/cache/shaarli/cache'; // Cache directory for thumbnails for SLOW services (like flickr)
+ $GLOBALS['config']['PAGECACHE'] = 'pagecache'; // Page cache directory.
  $GLOBALS['config']['ENABLE_LOCALCACHE'] = true; // Enable Shaarli to store thumbnail in a local cache. Disable to reduce webspace usage.
  $GLOBALS['config']['PUBSUBHUB_URL'] = ''; // PubSubHubbub support. Put an empty string to disable, or put your hub url here to enable.
-                                           // Note: You must have publisher.php in the same directory as Shaarli index.php
-@@ -38,7 +38,7 @@
- 
+@@ -57,7 +57,7 @@
  include "inc/rain.tpl.class.php"; //include Rain TPL
  raintpl::$tpl_dir = "tpl/"; // template directory
+ if (!is_dir('tmp')) { mkdir('tmp',0705); chmod('tmp',0705); }
 -raintpl::$cache_dir = "tmp/"; // cache directory
 +raintpl::$cache_dir = "/var/cache/shaarli/tmp/"; // cache directory
  
- ob_start();
+ ob_start();  // Output buffering for the page cache.
  
