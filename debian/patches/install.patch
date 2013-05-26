@@ -27,11 +27,13 @@ instead of their paths being relative to the application's directory.
  $GLOBALS['config']['ENABLE_LOCALCACHE'] = true; // Enable Shaarli to store thumbnail in a local cache. Disable to reduce webspace usage.
  $GLOBALS['config']['PUBSUBHUB_URL'] = ''; // PubSubHubbub support. Put an empty string to disable, or put your hub url here to enable.
  $GLOBALS['config']['UPDATECHECK_FILENAME'] = $GLOBALS['config']['DATADIR'].'/lastupdatecheck.txt'; // For updates check of Shaarli.
-@@ -57,7 +57,7 @@
+@@ -56,8 +56,8 @@
+ 
  include "inc/rain.tpl.class.php"; //include Rain TPL
  raintpl::$tpl_dir = "tpl/"; // template directory
- if (!is_dir('tmp')) { mkdir('tmp',0705); chmod('tmp',0705); }
+-if (!is_dir('tmp')) { mkdir('tmp',0705); chmod('tmp',0705); }
 -raintpl::$cache_dir = "tmp/"; // cache directory
++if (!is_dir('/var/cache/shaarli/tmp')) { mkdir('/var/cache/shaarli/tmp',0705); chmod('/var/cache/shaarli/tmp',0705); }
 +raintpl::$cache_dir = "/var/cache/shaarli/tmp/"; // cache directory
  
  ob_start();  // Output buffering for the page cache.
