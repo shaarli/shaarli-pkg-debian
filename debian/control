@@ -5,8 +5,8 @@ Maintainer: Emilien Klein <emilien+debian@klein.st>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.4
 Homepage: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
-Vcs-Browser: http://bazaar.launchpad.net/~emilien-klein/shaarli/debian/files
-Vcs-Bzr: lp:~emilien-klein/shaarli/debian
+Vcs-Browser: http://git.debian.org/?p=collab-maint/shaarli.git
+Vcs-Git: git://git.debian.org/collab-maint/shaarli.git
 
 Package: shaarli
 Architecture: all
