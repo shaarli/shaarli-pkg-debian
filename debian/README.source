@@ -45,6 +45,7 @@ everything back up to the Debian Git repository:
   $ git commit -a
   $ git-buildpackage --git-tag
   $ git push --all
+  $ git push --tags
 
 Thanks for updating the package!
 
