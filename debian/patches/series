@@ -2,3 +2,4 @@ javascript-libraries.patch
 raintpl-tmp-folder-creation.patch
 install.patch
 use-packaged-raintpl.patch
+no-error-when-owndir-unwritable.patch
