@@ -15,6 +15,7 @@ Depends: libapache2-mod-php5 | libapache2-mod-php5filter | php5-cgi | php5-fpm |
          libjs-jquery,
          libjs-jquery-ui,
          libjs-jquery-lazyload,
+         raintpl,
          ${misc:Depends}
 Recommends: apache2 | httpd
 Description: Personal, minimalist, super-fast and no-database Delicious clone

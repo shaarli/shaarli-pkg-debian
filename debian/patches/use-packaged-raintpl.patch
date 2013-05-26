@@ -1,0 +1,12 @@
+Use the raintpl package provided in Debian instead of the hard copy of its source code (which is already removed from the DFSG repackaged archive)
+--- a/index.php
++++ b/index.php
+@@ -54,7 +54,7 @@
+ error_reporting(E_ALL^E_WARNING);  // See all error except warnings.
+ //error_reporting(-1); // See all errors (for debugging only)
+ 
+-include "inc/rain.tpl.class.php"; //include Rain TPL
++include "/usr/share/raintpl/inc/rain.tpl.class.php"; //include Rain TPL
+ raintpl::$tpl_dir = "tpl/"; // template directory
+ if (!is_dir('tmp')) { mkdir('tmp',0705); chmod('tmp',0705); }
+ raintpl::$cache_dir = "/var/cache/shaarli/tmp/"; // cache directory
