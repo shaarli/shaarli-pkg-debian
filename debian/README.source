@@ -1,75 +1,46 @@
 Shaarli for Debian
-------------------
+==================
 
 Shaarli can be downloaded from its webpage:
 http://sebsauvage.net/wiki/doku.php?id=php:shaarli
 
-The zipfile which is provided there is not suitable for debian packaging
+The zipfile which is provided there is not suitable for Debian packaging
 directly, so there is a script to get it and turn it into a DFSG-complying
 archive.
 
-To use this script, launch 'sh debian/downloadNewest.sh' from the root
-directory of the package. The effect of this script is to uncompress the
-zipfile, remove unnecessary files (mainly third party sources which are
-packaged elsewhere in Debian), and create the standard orig.tar.gz archive
-for debian.
-
-This should issue something like that on success:
-
--------------------
-$ sh debian/downloadNewest.sh 
-attempting to get a newer version of shaarli
-shaarli: Newer version (0.0.41beta) available on remote site:
-  http://sebsauvage.net/files/shaarli_0.0.41beta.zip
-  (local version is 0.0.38~beta~dfsg1, mangled local version number 0.0.38beta)
-shaarli_0.0.41beta/:  ucsize 306 <> csize 0 for STORED entry
-         continuing with "compressed" size value
-shaarli_0.0.41beta/images/:  ucsize 680 <> csize 0 for STORED entry
-         continuing with "compressed" size value
-shaarli_0.0.41beta/inc/:  ucsize 272 <> csize 0 for STORED entry
-         continuing with "compressed" size value
-shaarli_0.0.41beta/tpl/:  ucsize 816 <> csize 0 for STORED entry
-         continuing with "compressed" size value
-extracted the newest version into ../shaarli-0.0.41~beta~dfsg1
--------------------
-
-The DFSG-complying tree is in the directory ../shaarli-x.y.z~beta~dfsg1
-and its archive is at ../shaarli_x.y.z~beta~dfsg1.orig.tar.gz
-
-Packaging a new version
------------------------
+Obtaining the Debian source package
+-----------------------------------
 
 shaarli is maintained using git-buildpackage. This file documents the steps
 needed to package a new upstream version.
 
-One-time setup steps: get your copy of the Debian source package from Git, and
-the Debian files for the latest package:
-  $ apt-get source shaarli
+One-time setup steps: get your copy of the Debian source package from Git:
   $ git clone ssh://<user>@git.debian.org/git/collab-maint/shaarli.git
   $ cd shaarli
   $ git checkout -b pristine-tar remotes/origin/pristine-tar
   $ git checkout -b upstream remotes/origin/upstream
+  $ git checkout -b dfsg_clean remotes/origin/dfsg_clean
+  $ git checkout master
+
+Packaging a new version
+-----------------------
 
 From inside the shaarli folder:
-1. Retrieve the new upstream tarball and update the new upstream source into
-the git repository:
-  $ git-import-orig --pristine-tar --uscan
+1. Retrieve the new upstream zipfile, update the new upstream source into the
+git repository, and remove the non-DFSG files:
+  $ sh debian/download_repackage_dfsg.sh
 
-2. Update the debian/changelog file to document the new version. Hint: you can
-copy the file ../shaarli-<new_version>/debian/changelog that was
-automatically updated by the previous step.
+2. Build the package:
+  $ git-buildpackage --git-ignore-new
 
-3. Build the package:
-  $ git-buildpackage --git-pristine-tar --git-ignore-new
-
-4. Before uploading the new package, make sure to build the package at least
+3. Before uploading the new package, make sure to build the package at least
 once in a chroot environment:
   $ sudo pbuilder --update
-  $ BUILDER=pbuilder git-buildpackage --git-pbuilder --git-pristine-tar --git-ignore-new
+  $ BUILDER=pbuilder git-buildpackage --git-pbuilder --git-ignore-new
 
-5. When you are fine with the new package, upload it to Debian.
+4. When you are fine with the new package, upload it to Debian.
 
-6. Don't forget to commit your changes, tag the new Debian version and push
+5. Don't forget to commit your changes, tag the new Debian version and push
 everything back up to the Debian Git repository:
   $ git commit -a
   $ git-buildpackage --git-tag
@@ -77,5 +48,5 @@ everything back up to the Debian Git repository:
 
 Thanks for updating the package!
 
- -- Emilien Klein <emilien+debian@klein.st>  Sat, 25 May 2013 20:46:07 +0200
+ -- Emilien Klein <emilien+debian@klein.st>  Sun, 26 May 2013 03:54:20 +0200
 
