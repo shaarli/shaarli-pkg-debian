@@ -1,3 +1,4 @@
+No need to check if Shaarli can write in its own directory, since all data/cache/etc. are placed in dedicated folders for this Debian package.
 --- a/index.php
 +++ b/index.php
 @@ -78,7 +78,6 @@
