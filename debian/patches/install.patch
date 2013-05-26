@@ -1,6 +1,7 @@
-Sets the location of the data, cache and tmp directories to
+Sets the location of the data, cache, pagecache and tmp directories to
 /var/lib/shaarli/data
 /var/cache/shaarli/cache
+/var/cache/shaarli/pagecache
 /var/cache/shaarli/tmp
 
 instead of their paths being relative to the application's directory.
@@ -15,15 +16,17 @@ instead of their paths being relative to the application's directory.
  $GLOBALS['config']['CONFIG_FILE'] = $GLOBALS['config']['DATADIR'].'/config.php'; // Configuration file (user login/password)
  $GLOBALS['config']['DATASTORE'] = $GLOBALS['config']['DATADIR'].'/datastore.php'; // Data storage file.
  $GLOBALS['config']['LINKS_PER_PAGE'] = 20; // Default links per page.
-@@ -16,7 +16,7 @@
+@@ -16,8 +16,8 @@
  $GLOBALS['config']['OPEN_SHAARLI'] = false; // If true, anyone can add/edit/delete links without having to login
  $GLOBALS['config']['HIDE_TIMESTAMPS'] = false; // If true, the moment when links were saved are not shown to users that are not logged in.
  $GLOBALS['config']['ENABLE_THUMBNAILS'] = true; // Enable thumbnails in links.
 -$GLOBALS['config']['CACHEDIR'] = 'cache'; // Cache directory for thumbnails for SLOW services (like flickr)
+-$GLOBALS['config']['PAGECACHE'] = 'pagecache'; // Page cache directory.
 +$GLOBALS['config']['CACHEDIR'] = '/var/cache/shaarli/cache'; // Cache directory for thumbnails for SLOW services (like flickr)
- $GLOBALS['config']['PAGECACHE'] = 'pagecache'; // Page cache directory.
++$GLOBALS['config']['PAGECACHE'] = '/var/cache/shaarli/pagecache'; // Page cache directory.
  $GLOBALS['config']['ENABLE_LOCALCACHE'] = true; // Enable Shaarli to store thumbnail in a local cache. Disable to reduce webspace usage.
  $GLOBALS['config']['PUBSUBHUB_URL'] = ''; // PubSubHubbub support. Put an empty string to disable, or put your hub url here to enable.
+ $GLOBALS['config']['UPDATECHECK_FILENAME'] = $GLOBALS['config']['DATADIR'].'/lastupdatecheck.txt'; // For updates check of Shaarli.
 @@ -57,7 +57,7 @@
  include "inc/rain.tpl.class.php"; //include Rain TPL
  raintpl::$tpl_dir = "tpl/"; // template directory

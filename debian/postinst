@@ -23,8 +23,8 @@ apache_install() {
 	if [ -d /etc/$webserver/conf.d ] && [ ! -e /etc/$webserver/conf.d/shaarli.conf ]; then
 		ln -s /etc/shaarli/apache.conf /etc/$webserver/conf.d/shaarli.conf
 	fi
-	# Fix owner and group for data, cache and tmp folders
-	chown www-data:www-data /var/lib/shaarli/data /var/cache/shaarli/cache /var/cache/shaarli/tmp
+	# Fix owner and group for data, cache, pagecache and tmp folders
+	chown www-data:www-data /var/lib/shaarli/data /var/cache/shaarli/cache /var/cache/shaarli/pagecache /var/cache/shaarli/tmp
 }
 
 case "$1" in
