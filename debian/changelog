@@ -1,5 +1,9 @@
 shaarli (0.0.41~beta~dfsg2-1) unstable; urgency=low
 
+  [ Emilien Klein ]
   * Initial release (Closes: #654814 and #709644)
+
+  [ Georges Khaznadar ]
+  * Updated Maintainer: and Uploaders: fields in d/control
 
  -- Emilien Klein <emilien+debian@klein.st>  Sun, 26 May 2013 22:36:57 +0200
