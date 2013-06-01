@@ -1,3 +1,9 @@
+shaarli (0.0.41~beta~dfsg2-2) unstable; urgency=low
+
+  * improved the file d/copyright, thanks to Luca Flavigna's remarks
+
+ -- Georges Khaznadar <georgesk@debian.org>  Sat, 01 Jun 2013 16:53:09 +0200
+
 shaarli (0.0.41~beta~dfsg2-1) unstable; urgency=low
 
   [ Emilien Klein ]
