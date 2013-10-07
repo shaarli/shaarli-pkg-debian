@@ -3,6 +3,7 @@ shaarli (0.0.41~beta~dfsg2-3) unstable; urgency=low
   * Solve various Lintian warnings and info:
     - field-name-typo-in-dep5-copyright
     - vcs-field-not-canonical
+    - unused-license-paragraph-in-dep5-copyright
 
  -- Emilien Klein <emilien+debian@klein.st>  Mon, 07 Oct 2013 22:12:34 +0200
 
