@@ -1,5 +1,7 @@
 shaarli (0.0.41~beta~dfsg2-3) unstable; urgency=low
 
+  * Remove check to see if own directory is readable (check was only
+    partially removed)
   * Solve various Lintian warnings and info:
     - field-name-typo-in-dep5-copyright
     - vcs-field-not-canonical
