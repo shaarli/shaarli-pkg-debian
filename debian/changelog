@@ -1,3 +1,10 @@
+shaarli (0.0.41~beta~dfsg2-3) unstable; urgency=low
+
+  * Solve various Lintian warnings and info:
+    - field-name-typo-in-dep5-copyright
+
+ -- Emilien Klein <emilien+debian@klein.st>  Mon, 07 Oct 2013 22:12:34 +0200
+
 shaarli (0.0.41~beta~dfsg2-2) unstable; urgency=low
 
   * improved the file d/copyright, thanks to Luca Flavigna's remarks
