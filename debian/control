@@ -1,8 +1,8 @@
 Source: shaarli
 Section: web
 Priority: optional
-Maintainer: Georges Khaznadar <georgesk@debian.org>
-Uploaders: Emilien Klein <emilien+debian@klein.st>
+Maintainer: Emilien Klein <emilien+debian@klein.st>
+Uploaders: Georges Khaznadar <georgesk@debian.org>
 Build-Depends: debhelper (>= 8.0.0)
 Standards-Version: 3.9.4
 Homepage: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
