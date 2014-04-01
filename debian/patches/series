@@ -1,3 +1,4 @@
+fix-bug-743252-CVE-2013-7351
 javascript-libraries.patch
 raintpl-tmp-folder-creation.patch
 install.patch
