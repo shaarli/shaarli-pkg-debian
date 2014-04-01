@@ -1,3 +1,12 @@
+shaarli (0.0.41~beta~dfsg2-4) unstable; urgency=low
+
+  * Fix multiple XSS in index.php (CVE-2013-7351) (Closes: #743252)
+      This is already fixed upstream:
+      https://github.com/sebsauvage/Shaarli/issues/134
+  * Update Standards-Version to 3.9.5
+
+ -- Emilien Klein <emilien+debian@klein.st>  Tue, 01 Apr 2014 21:26:06 +0200
+
 shaarli (0.0.41~beta~dfsg2-3) unstable; urgency=low
 
   * Remove check to see if own directory is readable (check was only
