@@ -1,6 +1,6 @@
 shaarli (0.0.41~beta~dfsg2-5) UNRELEASED; urgency=medium
 
-  * added a build-dependency on dh-apache2
+  * added a build-dependency on apache2-dev
   * added "--with apache2" in d/rules
 
  -- Georges Khaznadar <georgesk@debian.org>  Mon, 30 Jun 2014 11:49:01 +0200
