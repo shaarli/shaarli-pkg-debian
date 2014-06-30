@@ -19,4 +19,4 @@ override_dh_fixperms:
 	chmod 644 debian/shaarli/usr/share/shaarli/index.php
 
 %:
-	dh $@ 
+	dh $@ --with apache2
