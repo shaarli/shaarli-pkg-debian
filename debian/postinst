@@ -17,23 +17,15 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
-apache_install() {
-	webserver=$1
-	# Link to the configuration file
-	if [ -d /etc/$webserver/conf.d ] && [ ! -e /etc/$webserver/conf.d/shaarli.conf ]; then
-		ln -s /etc/shaarli/apache.conf /etc/$webserver/conf.d/shaarli.conf
-	fi
-	# Fix owner and group for data, cache, pagecache and tmp folders
-	chown www-data:www-data /var/lib/shaarli/data /var/cache/shaarli/cache /var/cache/shaarli/pagecache /var/cache/shaarli/tmp
-}
-
 case "$1" in
     configure)
         webservers="apache2, " #TODO: Add other servers
 	    for webserver in $webservers; do
 		    webserver=${webserver%,}
 		    if [ "$webserver" = "apache2" ] && [ -f /etc/init.d/$webserver ] ; then
-                apache_install $webserver
+				# Enabling configuration is automatically added by dh_apache2
+				# Fix owner and group for data, cache, pagecache and tmp folders
+				chown www-data:www-data /var/lib/shaarli/data /var/cache/shaarli/cache /var/cache/shaarli/pagecache /var/cache/shaarli/tmp
 		    #else
 			#    # TODO: Handle other servers
 		    fi

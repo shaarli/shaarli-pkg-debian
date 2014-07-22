@@ -18,22 +18,16 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
-apache_remove() {
-	if [ -d /etc/$webserver/conf.d ] && [ -L /etc/$webserver/conf.d/shaarli.conf ]; then
-		rm -f /etc/$webserver/conf.d/shaarli.conf
-	fi
-}
-
 case "$1" in
     remove)
         webservers="apache2, " #TODO: Add other servers
 	    for webserver in $webservers; do
 		    webserver=${webserver%,}
-		    if [ "$webserver" = "apache2" ] && [ -f /etc/init.d/$webserver ] ; then
-                apache_remove $webserver
+		    #if [ "$webserver" = "apache2" ] && [ -f /etc/init.d/$webserver ] ; then
+				# Disabling configuration is automatically added by dh_apache2
 		    #else
 			#    # TODO: Handle other servers
-		    fi
+		    #fi
 		    # Reload webserver
 		    # Redirection of 3 is needed because Debconf uses it and it might 
 		    # be inherited by webserver. See bug #446324.
