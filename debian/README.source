@@ -31,7 +31,7 @@ git repository, and remove the non-DFSG files:
   $ sh debian/download_repackage_dfsg.sh
 
 2. Build the package:
-  $ git-buildpackage --git-ignore-new
+  $ git-buildpackage --git-pristine-tar --git-ignore-new -us -uc
 
 3. Before uploading the new package, make sure to build the package at least
 once in a chroot environment:
