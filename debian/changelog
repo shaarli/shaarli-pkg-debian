@@ -8,7 +8,7 @@ shaarli (0.0.41~beta~dfsg2-5) unstable; urgency=low
   * added a build-dependency on apache2-dev
   * added "--with apache2" in d/rules; Closes: #743336
 
- -- Emilien Klein <emilien+debian@klein.st>  Tue, 22 Jul 2014 23:15:55 +0200
+ -- Emilien Klein <emilien+debian@klein.st>  Wed, 23 Jul 2014 20:51:16 +0200
 
 shaarli (0.0.41~beta~dfsg2-4) unstable; urgency=low
 
