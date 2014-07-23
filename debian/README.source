@@ -38,7 +38,8 @@ once in a chroot environment:
   $ sudo pbuilder --update
   $ BUILDER=pbuilder git-buildpackage --git-pbuilder --git-ignore-new
 
-4. When you are fine with the new package, upload it to Debian.
+4. When you are fine with the new package, upload it to Debian, e.g.:
+  $ dput shaarli_0.0.41~beta~dfsg2-5_i386.changes
 
 5. Don't forget to commit your changes, tag the new Debian version and push
 everything back up to the Debian Git repository:
