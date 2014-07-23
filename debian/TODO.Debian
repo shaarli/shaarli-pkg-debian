@@ -13,5 +13,14 @@ It is recommended that images for a package be stored in /usr/share/images/packa
                        http://localhost/images/<package>/<filename>
 
 
+================================================================
+
+
+Provide an nginx config file
+Note that according to https://wiki.debian.org/Apache/PackagingFor24#Web_Applications_in_a_nutshell_.28with_dh_apache2.29
+the debian/shaarli.apache2 file must be updated to mention nginx:
+
+conf debian/apache/shaarli.conf optionally_other_webservers_you_support
+
 
 ================================================================
