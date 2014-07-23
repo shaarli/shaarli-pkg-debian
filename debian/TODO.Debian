@@ -1,0 +1,17 @@
+List of suggested improvements to the Debian package
+----------------------------------------------------
+
+Move images from /usr/share/shaarli/images to /usr/share/images/shaarli
+
+
+Per https://www.debian.org/doc/debian-policy/ch-customized-programs.html#s-web-appl :
+
+Access to images
+
+It is recommended that images for a package be stored in /usr/share/images/package and may be referred to through an alias /images/ as
+
+                       http://localhost/images/<package>/<filename>
+
+
+
+================================================================
