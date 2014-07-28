@@ -2,22 +2,61 @@ Use the following Javascript libraries that are already packaged in Debian:
 - jquery
 - jquery-ui
 - jquery-lazyload
---- a/tpl/includes.html
-+++ b/tpl/includes.html
-@@ -7,4 +7,4 @@
- <link href="images/favicon.ico#" rel="shortcut icon" type="image/x-icon" />
- <link type="text/css" rel="stylesheet" href="inc/shaarli.css?version={$version|urlencode}#" />
- {if condition="is_file('inc/user.css')"}<link type="text/css" rel="stylesheet" href="inc/user.css?version={$version}#" />{/if}
+--- a/tpl/changetag.html
++++ b/tpl/changetag.html
+@@ -1,7 +1,7 @@
+ <!DOCTYPE html>
+ <html>
+ <head>{include="includes"}
 -{if="empty($GLOBALS['disablejquery'])"}<script src="inc/jquery.min.js#"></script><script src="inc/jquery-ui.min.js#"></script>{/if}
 +{if="empty($GLOBALS['disablejquery'])"}<script src="/javascript/jquery/jquery.min.js#" type="text/javascript"></script><script src="/javascript/jquery-ui/jquery-ui.min.js#" type="text/javascript"></script>{/if}
+ </head>
+ <body onload="document.changetag.fromtag.focus();">
+ <div id="pageheader">
+@@ -23,4 +23,4 @@
+ </script>
+ {/if}
+ </body>
+-</html>
+\ No newline at end of file
++</html>
+--- a/tpl/editlink.html
++++ b/tpl/editlink.html
+@@ -1,7 +1,7 @@
+ <!DOCTYPE html>
+ <html>
+ <head>{include="includes"}
+-{if="empty($GLOBALS['disablejquery'])"}<script src="inc/jquery.min.js#"></script><script src="inc/jquery-ui.min.js#"></script>{/if}
++{if="empty($GLOBALS['disablejquery'])"}<script src="/javascript/jquery/jquery.min.js#" type="text/javascript"></script><script src="/javascript/jquery-ui/jquery-ui.min.js#" type="text/javascript"></script>{/if}
+ </head>
+ <body
+ {if condition="$link.title==''"}onload="document.linkform.lf_title.focus();"
+@@ -41,4 +41,4 @@
+ </script>
+ {/if}
+ </body>
+-</html>
+\ No newline at end of file
++</html>
 --- a/tpl/picwall.html
 +++ b/tpl/picwall.html
-@@ -2,7 +2,7 @@
+@@ -2,9 +2,9 @@
  <html>
  <head>{include="includes"}
  {if="empty($GLOBALS['disablejquery'])"}	
--	<script src="inc/jquery.lazyload.min.js#"></script>
-+	<script src="/javascript/jquery-lazyload/jquery.lazyload.min.js#" type="text/javascript"></script>
+-<script src="inc/jquery.min.js#"></script>
+-<script src="inc/jquery-ui.min.js#"></script>
+-<script src="inc/jquery.lazyload.min.js#"></script>
++<script src="/javascript/jquery/jquery.min.js#" type="text/javascript"></script>
++<script src="/javascript/jquery-ui/jquery-ui.min.js#" type="text/javascript"></script>
++<script src="/javascript/jquery-lazyload/jquery.lazyload.min.js#" type="text/javascript"></script>
  {/if}
  </head>
  <body>
+@@ -28,4 +28,4 @@
+ </script>
+ {/if} 
+ </body>
+-</html>
+\ No newline at end of file
++</html>
