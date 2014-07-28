@@ -1,3 +1,11 @@
+shaarli (0.0.42~beta~dfsg1-1) unstable; urgency=low
+
+  * New upstream version
+  * d/patches/fix-bug-743252-CVE-2013-7351: Remove patch for #743252, as it is
+      included upstream
+
+ -- Emilien Klein <emilien+debian@klein.st>  Mon, 28 Jul 2014 20:52:59 +0200
+
 shaarli (0.0.41~beta~dfsg2-5) unstable; urgency=low
 
   [ Emilien Klein ]
