@@ -1,4 +1,4 @@
 version=3
 
-opts=dversionmangle=s/~beta~dfsg\d+$/beta/ \
-  http://sebsauvage.net/wiki/doku.php?id=php:shaarli http://sebsauvage.net/files/shaarli_(.*)\.zip
+opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/shaarli-$1\.tar\.gz/,dversionmangle=s/~beta~dfsg\d+$/beta/ \
+  https://github.com/shaarli/Shaarli/tags .*/v?(\d\S*)\.tar\.gz

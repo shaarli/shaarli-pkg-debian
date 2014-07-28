@@ -2,10 +2,10 @@ Shaarli for Debian
 ==================
 
 Shaarli can be downloaded from its webpage:
-http://sebsauvage.net/wiki/doku.php?id=php:shaarli
+https://github.com/shaarli/Shaarli
 
-The zipfile which is provided there is not suitable for Debian packaging
-directly, so there is a script to get it and turn it into a DFSG-complying
+The upstream tarball is not suitable for Debian packaging directly. The script
+download_repackage_dfsg.sh will get it and turn it into a DFSG-complying
 archive.
 
 Obtaining the Debian source package
