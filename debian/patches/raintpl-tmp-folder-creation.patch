@@ -1,7 +1,7 @@
 Use the tmp folder defined earlier for RainTPL
 --- a/index.php
 +++ b/index.php
-@@ -80,7 +80,7 @@
+@@ -88,7 +88,7 @@
  // Directories creations (Note that your web host may require differents rights than 705.)
  if (!is_writable(realpath(dirname(__FILE__)))) die('<pre>ERROR: Shaarli does not have the right to write in its own directory ('.realpath(dirname(__FILE__)).').</pre>');
  if (!is_dir($GLOBALS['config']['DATADIR'])) { mkdir($GLOBALS['config']['DATADIR'],0705); chmod($GLOBALS['config']['DATADIR'],0705); }
@@ -9,4 +9,4 @@ Use the tmp folder defined earlier for RainTPL
 +if (!is_dir(raintpl::$cache_dir)) { mkdir(raintpl::$cache_dir,0705); chmod(raintpl::$cache_dir,0705); } // For RainTPL temporary files.
  if (!is_file($GLOBALS['config']['DATADIR'].'/.htaccess')) { file_put_contents($GLOBALS['config']['DATADIR'].'/.htaccess',"Allow from none\nDeny from all\n"); } // Protect data files.
  // Second check to see if Shaarli can write in its directory, because on some hosts is_writable() is not reliable.
- if (!is_file($GLOBALS['config']['DATADIR'].'/.htaccess')) die('<pre>ERROR: Shaarli does not have the right to write in its own directory ('.realpath(dirname(__FILE__)).').</pre>');
+ if (!is_file($GLOBALS['config']['DATADIR'].'/.htaccess')) die('<pre>ERROR: Shaarli does not have the right to write in its data directory ('.realpath($GLOBALS['config']['DATADIR']).').</pre>');
