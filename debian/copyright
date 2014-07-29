@@ -22,6 +22,10 @@ Copyright: 2005, 2014 jQuery Foundation and other contributors,
 License: Expat
 Comment: https://jquery.org/license/
 
+Files: inc/jquery.lazyload.min.js
+Copyright: 2007-2012 Mika Tuupola <tuupola@appelsiini.net>
+License: Expat
+
 Files: inc/qr.min.js
 Copyright: 2014 Alasdair Mercer <mercer.alasdair@gmail.com>
 License: Expat
