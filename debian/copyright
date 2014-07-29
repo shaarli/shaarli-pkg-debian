@@ -17,6 +17,11 @@ Copyright: 2011-2012, Sébastien Sauvage <sebsauvage@sebsauvage.net>
            2010, Yahoo! Inc. (http://www.yahoo.com)
 License: BSD
 
+Files: inc/jquery.min.js inc/jquery-ui.min.js
+Copyright: 2005, 2014 jQuery Foundation and other contributors,
+License: MIT
+Comment: https://jquery.org/license/
+
 Files: inc/qr.min.js
 Copyright: 2014 Alasdair Mercer <mercer.alasdair@gmail.com>
 License: MIT
