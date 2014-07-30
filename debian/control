@@ -13,6 +13,7 @@ Package: shaarli
 Architecture: all
 Depends: libapache2-mod-php5 | libapache2-mod-php5filter | php5-cgi | php5-fpm | php5,
          php5-gd,
+         javascript-common,
          libjs-jquery,
          libjs-jquery-ui,
          libjs-jquery-lazyload,
