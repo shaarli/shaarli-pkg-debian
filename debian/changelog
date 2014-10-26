@@ -1,7 +1,9 @@
 shaarli (0.0.42~beta~dfsg1-1) unstable; urgency=low
 
   * New upstream version
-  * d/control: depend on javascript-common to serve the JavaScript libraries
+  * d/control:
+      - Depend on javascript-common to serve the JavaScript libraries
+      - Update Standards-Version to 3.9.6
   * d/copyright:
       - Mention the licenses of the Javascript libraries
       - Rename BSD to BSD-3-clause
@@ -13,7 +15,7 @@ shaarli (0.0.42~beta~dfsg1-1) unstable; urgency=low
   * d/patches/javascript-libraries.patch: Update due to upstream changes where
       JavaScript libraries are used
 
- -- Emilien Klein <emilien+debian@klein.st>  Mon, 28 Jul 2014 20:52:59 +0200
+ -- Emilien Klein <emilien+debian@klein.st>  Sun, 26 Oct 2014 23:21:49 +0100
 
 shaarli (0.0.41~beta~dfsg2-5) unstable; urgency=low
 

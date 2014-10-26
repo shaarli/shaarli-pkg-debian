@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Emilien Klein <emilien+debian@klein.st>
 Uploaders: Georges Khaznadar <georgesk@debian.org>
 Build-Depends: debhelper (>= 8.0.0), apache2-dev
-Standards-Version: 3.9.5
+Standards-Version: 3.9.6
 Homepage: https://github.com/shaarli/Shaarli
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/shaarli.git
 Vcs-Git: git://anonscm.debian.org/collab-maint/shaarli.git
