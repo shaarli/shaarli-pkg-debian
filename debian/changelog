@@ -2,7 +2,9 @@ shaarli (0.0.42~beta~dfsg1-1) unstable; urgency=low
 
   * New upstream version
   * d/control: depend on javascript-common to serve the JavaScript libraries
-  * d/copyright: updated to mention the licenses of the Javascript libraries
+  * d/copyright:
+      - Mention the licenses of the Javascript libraries
+      - Rename BSD to BSD-3-clause
   * d/patches/remove-qr.js-library.patch: Remove the JavaScript code using
       the qr.js library, based on concerns on potential license issues.
       See https://github.com/neocotic/qr.js/issues/23 for detail.
