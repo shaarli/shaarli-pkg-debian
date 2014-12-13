@@ -1,12 +1,17 @@
 shaarli (0.0.42~beta~dfsg1-2) unstable; urgency=low
 
   * Fix permissions on cache and data folders (Closes: #773039)
+  * Fix previous changelog entry, indicating upstream change
 
  -- Emilien Klein <emilien+debian@klein.st>  Sat, 13 Dec 2014 16:40:35 +0100
 
 shaarli (0.0.42~beta~dfsg1-1) unstable; urgency=low
 
   * New upstream version
+  * d/control and d/watch: The upstream source was changed from Seb Sauvage's
+      inactive repository [0] to the community-maintained repository [1].
+      [0] https://github.com/sebsauvage/Shaarli
+      [1] https://github.com/shaarli/Shaarli
   * d/control:
       - Depend on javascript-common to serve the JavaScript libraries
       - Update Standards-Version to 3.9.6
