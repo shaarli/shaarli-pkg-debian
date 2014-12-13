@@ -17,6 +17,11 @@ override_dh_fixperms:
 	chmod 644 debian/shaarli/usr/share/shaarli/inc/*
 	chmod 644 debian/shaarli/usr/share/shaarli/tpl/*
 	chmod 644 debian/shaarli/usr/share/shaarli/index.php
+	# Make the web server user the owner of the cache and data directories
+	chown www-data:www-data debian/shaarli/var/lib/shaarli/data
+	chown www-data:www-data debian/shaarli/var/cache/shaarli/cache
+	chown www-data:www-data debian/shaarli/var/cache/shaarli/pagecache
+	chown www-data:www-data debian/shaarli/var/cache/shaarli/tmp
 
 %:
 	dh $@ --with apache2

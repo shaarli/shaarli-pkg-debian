@@ -1,3 +1,9 @@
+shaarli (0.0.42~beta~dfsg1-2) unstable; urgency=low
+
+  * Fix permissions on cache and data folders (Closes: #773039)
+
+ -- Emilien Klein <emilien+debian@klein.st>  Sat, 13 Dec 2014 16:40:35 +0100
+
 shaarli (0.0.42~beta~dfsg1-1) unstable; urgency=low
 
   * New upstream version
