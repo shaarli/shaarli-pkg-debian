@@ -6,18 +6,16 @@ echo "Attempting to get a newer version of ${package}"
 
 if uscan --no-symlink; then
     # There is a new version available!
-    version=$(uscan --report --verbose| sed -n 's/Newest version on remote site is \([.0-9]\+\).*/\1/p')
+    version=$(uscan --report --verbose| sed -n 's/uscan: Newest version of shaarli on remote site is \([.0-9]\+\).*/\1/p')
     # Version number for the Debian package
-    dversion=${version}~beta~dfsg1
+    dversion=${version}~dfsg1
     # Version number for the git tag
-    tversion=${version}_beta_dfsg1
-    # Upstream's version number
-    version=${version}beta
+    tversion=${version}_dfsg1
     
     if [ -f ../${package}-${version}.tar.gz ]; then
         git checkout upstream
         echo "Importing new upstream version in upstream branch"
-        git-import-orig --pristine-tar --no-merge --upstream-version=${version} ../${package}-${version}.tar.gz
+        gbp import-orig --pristine-tar --no-merge --upstream-version=${version} ../${package}-${version}.tar.gz
         git checkout dfsg_clean
         git pull . upstream
         echo "Removing non-DFSG approved files"
