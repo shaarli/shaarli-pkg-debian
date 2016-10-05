@@ -6,7 +6,7 @@ echo "Attempting to get a newer version of ${package}"
 
 if uscan --no-symlink; then
     # There is a new version available!
-    version=$(uscan --report --verbose| sed -n 's/Newest version on remote site is \([.0-9]\+\).*/\1/p')
+    version=$(uscan --report --verbose| sed -n 's/uscan: Newest version of shaarli on remote site is \([.0-9]\+\).*/\1/p')
     # Version number for the Debian package
     dversion=${version}~dfsg1
     # Version number for the git tag
