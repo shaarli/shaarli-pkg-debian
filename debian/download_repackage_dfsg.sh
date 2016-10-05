@@ -15,7 +15,7 @@ if uscan --no-symlink; then
     if [ -f ../${package}-${version}.tar.gz ]; then
         git checkout upstream
         echo "Importing new upstream version in upstream branch"
-        git-import-orig --pristine-tar --no-merge --upstream-version=${version} ../${package}-${version}.tar.gz
+        gbp import-orig --pristine-tar --no-merge --upstream-version=${version} ../${package}-${version}.tar.gz
         git checkout dfsg_clean
         git pull . upstream
         echo "Removing non-DFSG approved files"
