@@ -8,11 +8,9 @@ if uscan --no-symlink; then
     # There is a new version available!
     version=$(uscan --report --verbose| sed -n 's/Newest version on remote site is \([.0-9]\+\).*/\1/p')
     # Version number for the Debian package
-    dversion=${version}~beta~dfsg1
+    dversion=${version}~dfsg1
     # Version number for the git tag
-    tversion=${version}_beta_dfsg1
-    # Upstream's version number
-    version=${version}beta
+    tversion=${version}_dfsg1
     
     if [ -f ../${package}-${version}.tar.gz ]; then
         git checkout upstream
