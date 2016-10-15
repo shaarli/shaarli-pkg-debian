@@ -1,12 +1,14 @@
-Use the raintpl package provided in Debian instead of the hard copy of its source code (which is already removed from the DFSG repackaged archive)
+Use the raintpl package provided in Debian instead of the hard copy of
+its source code (which is already removed from the DFSG repackaged
+archive)
 --- a/index.php
 +++ b/index.php
-@@ -62,7 +62,7 @@
- error_reporting(E_ALL^E_WARNING);  // See all error except warnings.
- //error_reporting(-1); // See all errors (for debugging only)
+@@ -55,7 +55,7 @@
+         ."- https://github.com/shaarli/Shaarli/wiki/Download-and-Installation";
+     exit;
+ }
+-require_once 'inc/rain.tpl.class.php';
++require_once '/usr/share/raintpl/inc/rain.tpl.class.php';
+ require_once __DIR__ . '/vendor/autoload.php';
  
--include "inc/rain.tpl.class.php"; //include Rain TPL
-+include "/usr/share/raintpl/inc/rain.tpl.class.php"; //include Rain TPL
- raintpl::$tpl_dir = "tpl/"; // template directory
- if (!is_dir('/var/cache/shaarli/tmp')) { mkdir('/var/cache/shaarli/tmp',0705); chmod('/var/cache/shaarli/tmp',0705); }
- raintpl::$cache_dir = "/var/cache/shaarli/tmp/"; // cache directory
+ // Shaarli library
