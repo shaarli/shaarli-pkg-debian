@@ -11,8 +11,8 @@ Vcs-Git: git://anonscm.debian.org/collab-maint/shaarli.git
 
 Package: shaarli
 Architecture: all
-Depends: libapache2-mod-php5 | libapache2-mod-php5filter | php5-cgi | php5-fpm | php5,
-         php5-gd,
+Depends: libapache2-mod-php | php-cgi | php-fpm | php,
+         php-gd,
          javascript-common,
          libjs-jquery,
          libjs-jquery-ui,
