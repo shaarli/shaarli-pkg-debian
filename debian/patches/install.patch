@@ -5,36 +5,42 @@ Sets the location of the data, cache, pagecache and tmp directories to
 /var/cache/shaarli/tmp
 
 instead of their paths being relative to the application's directory.
---- a/index.php
-+++ b/index.php
-@@ -12,7 +12,7 @@
+--- a/application/config/ConfigManager.php
++++ b/application/config/ConfigManager.php
+@@ -38,7 +38,7 @@
+     /**
+      * Constructor.
+      */
+-    public function __construct($configFile = 'data/config')
++    public function __construct($configFile = '/var/lib/shaarli/data/config')
+     {
+         $this->configFile = $configFile;
+         $this->initialize();
+@@ -287,17 +287,17 @@
+      */
+     protected function setDefaultValues()
+     {
+-        $this->setEmpty('resource.data_dir', 'data');
+-        $this->setEmpty('resource.config', 'data/config.php');
+-        $this->setEmpty('resource.datastore', 'data/datastore.php');
+-        $this->setEmpty('resource.ban_file', 'data/ipbans.php');
+-        $this->setEmpty('resource.updates', 'data/updates.txt');
+-        $this->setEmpty('resource.log', 'data/log.txt');
+-        $this->setEmpty('resource.update_check', 'data/lastupdatecheck.txt');
++        $this->setEmpty('resource.data_dir', '/var/lib/shaarli/data');
++        $this->setEmpty('resource.config', '/var/lib/shaarli/data/config.php');
++        $this->setEmpty('resource.datastore', '/var/lib/shaarli/data/datastore.php');
++        $this->setEmpty('resource.ban_file', '/var/lib/shaarli/data/ipbans.php');
++        $this->setEmpty('resource.updates', '/var/lib/shaarli/data/updates.txt');
++        $this->setEmpty('resource.log', '/var/lib/shaarli/data/log.txt');
++        $this->setEmpty('resource.update_check', '/var/lib/shaarli/data/lastupdatecheck.txt');
+         $this->setEmpty('resource.raintpl_tpl', 'tpl/');
+-        $this->setEmpty('resource.raintpl_tmp', 'tmp/');
+-        $this->setEmpty('resource.thumbnails_cache', 'cache');
+-        $this->setEmpty('resource.page_cache', 'pagecache');
++        $this->setEmpty('resource.raintpl_tmp', '/var/cache/shaarli/tmp/');
++        $this->setEmpty('resource.thumbnails_cache', '/var/cache/shaarli/cache');
++        $this->setEmpty('resource.page_cache', '/var/cache/shaarli/pagecache');
  
- // -----------------------------------------------------------------------------------------------
- // Hardcoded parameter (These parameters can be overwritten by creating the file /config/options.php)
--$GLOBALS['config']['DATADIR'] = 'data'; // Data subdirectory
-+$GLOBALS['config']['DATADIR'] = '/var/lib/shaarli/data'; // Data subdirectory
- $GLOBALS['config']['CONFIG_FILE'] = $GLOBALS['config']['DATADIR'].'/config.php'; // Configuration file (user login/password)
- $GLOBALS['config']['DATASTORE'] = $GLOBALS['config']['DATADIR'].'/datastore.php'; // Data storage file.
- $GLOBALS['config']['LINKS_PER_PAGE'] = 20; // Default links per page.
-@@ -22,8 +22,8 @@
- $GLOBALS['config']['OPEN_SHAARLI'] = false; // If true, anyone can add/edit/delete links without having to login
- $GLOBALS['config']['HIDE_TIMESTAMPS'] = false; // If true, the moment when links were saved are not shown to users that are not logged in.
- $GLOBALS['config']['ENABLE_THUMBNAILS'] = true; // Enable thumbnails in links.
--$GLOBALS['config']['CACHEDIR'] = 'cache'; // Cache directory for thumbnails for SLOW services (like flickr)
--$GLOBALS['config']['PAGECACHE'] = 'pagecache'; // Page cache directory.
-+$GLOBALS['config']['CACHEDIR'] = '/var/cache/shaarli/cache'; // Cache directory for thumbnails for SLOW services (like flickr)
-+$GLOBALS['config']['PAGECACHE'] = '/var/cache/shaarli/pagecache'; // Page cache directory.
- $GLOBALS['config']['ENABLE_LOCALCACHE'] = true; // Enable Shaarli to store thumbnail in a local cache. Disable to reduce webspace usage.
- $GLOBALS['config']['PUBSUBHUB_URL'] = ''; // PubSubHubbub support. Put an empty string to disable, or put your hub url here to enable.
- $GLOBALS['config']['UPDATECHECK_FILENAME'] = $GLOBALS['config']['DATADIR'].'/lastupdatecheck.txt'; // For updates check of Shaarli.
-@@ -64,8 +64,8 @@
- 
- include "inc/rain.tpl.class.php"; //include Rain TPL
- raintpl::$tpl_dir = "tpl/"; // template directory
--if (!is_dir('tmp')) { mkdir('tmp',0705); chmod('tmp',0705); }
--raintpl::$cache_dir = "tmp/"; // cache directory
-+if (!is_dir('/var/cache/shaarli/tmp')) { mkdir('/var/cache/shaarli/tmp',0705); chmod('/var/cache/shaarli/tmp',0705); }
-+raintpl::$cache_dir = "/var/cache/shaarli/tmp/"; // cache directory
- 
- ob_start();  // Output buffering for the page cache.
- 
+         $this->setEmpty('security.ban_after', 4);
+         $this->setEmpty('security.ban_duration', 1800);
