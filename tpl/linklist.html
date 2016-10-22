@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>{include="includes"}</head>
+<head>
+    <link type="text/css" rel="stylesheet" href="../inc/awesomplete.css" />
+    {include="includes"}
+</head>
 <body>
 <div id="pageheader">
     {include="page.header"}
-    <div id="headerform" style="width:100%; white-space:nowrap;">
-        <form method="GET" class="searchform" name="searchform" style="display:inline;"><input type="text" id="searchform_value" name="searchterm" style="width:30%" value=""> <input type="submit" value="Search" class="bigbutton"></form>
-        <form method="GET" class="tagfilter" name="tagfilter" style="display:inline;margin-left:24px;"><input type="text" name="searchtags" id="tagfilter_value" style="width:10%" value=""> <input type="submit" value="Filter by tag" class="bigbutton"></form>
+
+    <div id="headerform" class="search">
+        <form method="GET" class="searchform" name="searchform">
+            <input type="text" tabindex="1" id="searchform_value" name="searchterm" placeholder="Search text"
+               {if="!empty($search_term)"}
+                    value="{$search_term}"
+               {/if}
+            >
+            <input type="submit" value="Search" class="bigbutton">
+        </form>
+        <form method="GET" class="tagfilter" name="tagfilter">
+            <input type="text" tabindex="2" name="searchtags" id="tagfilter_value" placeholder="Filter by tag"
+                {if="!empty($search_tags)"}
+                    value="{$search_tags}"
+                {/if}
+                autocomplete="off" class="awesomplete" data-multiple data-minChars="1"
+                data-list="{loop="$tags"}{$key}, {/loop}"
+            >
+            <input type="submit" value="Search" class="bigbutton">
+        </form>
+        {loop="$plugins_header.fields_toolbar"}
+            {$value}
+        {/loop}
     </div>
 </div>
 
@@ -14,108 +37,96 @@
 
     {include="linklist.paging"}
 
+    <div id="plugin_zone_start_linklist" class="plugin_zone">
+        {loop="$plugin_start_zone"}
+            {$value}
+        {/loop}
+    </div>
+
     {if="count($links)==0"}
-        <div id="searchcriteria">Nothing found.</i></div>
-    {else}
-        {if="$search_type=='fulltext'"}
-            <div id="searchcriteria">{$result_count} results for <i>{$search_crits}</i></div>
-        {/if}
-        {if="$search_type=='tags'"}
-            <div id="searchcriteria">{$result_count} results for tags <i>
-            {loop="search_crits"}
-                <span class="linktag" title="Remove tag"><a href="?removetag={$value|htmlspecialchars}">{$value|htmlspecialchars} <span style="border-left:1px solid #aaa; padding-left:5px; color:#6767A7;">x</span></a></span>
-            {/loop}</i></div>
-        {/if}
+        <div id="searchcriteria">Nothing found.</div>
+    {elseif="!empty($search_term) or !empty($search_tags)"}
+        <div id="searchcriteria">
+            {$result_count} results
+            {if="!empty($search_term)"}
+                for <em>{$search_term}</em>
+            {/if}
+            {if="!empty($search_tags)"}
+                {$exploded_tags=explode(' ', $search_tags)}
+                tagged
+                {loop="$exploded_tags"}
+                    <span class="linktag" title="Remove tag">
+                        <a href="?removetag={function="urlencode($value)"}">{$value} <span class="remove">x</span></a>
+                    </span>
+                {/loop}
+            {/if}
+        </div>
     {/if}
     <ul>
         {loop="links"}
         <li{if="$value.class"} class="{$value.class}"{/if}>
-            <a name="{$value.linkdate|smallHash}" id="{$value.linkdate|smallHash}"></a>
+            <a id="{$value.shorturl}"></a>
             <div class="thumbnail">{$value.url|thumbnail}</div>
             <div class="linkcontainer">
                 {if="isLoggedIn()"}
                     <div class="linkeditbuttons">
-                        <form method="GET" class="buttoneditform"><input type="hidden" name="edit_link" value="{$value.linkdate}"><input type="image" alt="Edit" src="images/edit_icon.png#" title="Edit" class="button_edit"></form><br>
-                        <form method="POST" class="buttoneditform"><input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
-                        <input type="hidden" name="token" value="{$token}"><input type="hidden" name="delete_link"><input type="image" alt="Delete" src="images/delete_icon.png#" title="Delete" class="button_delete" onClick="return confirmDeleteLink();"></form>
+                        <form method="GET" class="buttoneditform">
+                            <input type="hidden" name="edit_link" value="{$value.linkdate}">
+                            <input type="image" alt="Edit" src="images/edit_icon.png#" title="Edit" class="button_edit">
+                        </form><br>
+                        <form method="POST" class="buttoneditform">
+                            <input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
+                            <input type="hidden" name="token" value="{$token}">
+                            <input type="hidden" name="delete_link">
+                            <input type="image" alt="Delete" src="images/delete_icon.png#" title="Delete"
+                                   class="button_delete" onClick="return confirmDeleteLink();">
+                        </form>
                     </div>
                 {/if}
-                <span class="linktitle"><a href="{$redirector}{$value.url|htmlspecialchars}">{$value.title|htmlspecialchars}</a></span>
+                <span class="linktitle">
+                    <a href="{$value.real_url}">{$value.title}</a>
+                </span>
                 <br>
-                {if="$value.description"}<div class="linkdescription"{if condition="$search_type=='permalink'"} style="max-height:none !important;"{/if}>{$value.description}</div>{/if}
-                {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
-                    <span class="linkdate" title="Permalink"><a href="?{$value.linkdate|smallHash}">{$value.localdate|htmlspecialchars} - permalink</a> - </span>
+                {if="$value.description"}<div class="linkdescription">{$value.description}</div>{/if}
+                {if="!$hide_timestamps || isLoggedIn()"}
+                    <span class="linkdate" title="Permalink"><a href="?{$value.linkdate|smallHash}">{function="strftime('%c', $value.timestamp)"} - permalink</a> - </span>
                 {else}
-                    <span class="linkdate" title="Short link here"><a href="?{$value.linkdate|smallHash}">permalink</a> - </span>
+                    <span class="linkdate" title="Short link here"><a href="?{$value.shorturl}">permalink</a> - </span>
                 {/if}
-                <div style="position:relative;display:inline;"><a href="http://qrfree.kaywa.com/?l=1&s=8&d={$scripturl|urlencode}%3F{$value.linkdate|smallHash}" 
-                    onclick="showQrCode(this); return false;" class="qrcode" data-permalink="{$scripturl}?{$value.linkdate|smallHash}"><img src="images/qrcode.png#" width="13" height="13" title="QR-Code"></a></div> - 
-                <span class="linkurl" title="Short link">{$value.url|htmlspecialchars}</span><br>
+
+                {loop="$value.link_plugin"}
+                    <span>{$value}</span> -
+                {/loop}
+
+                <a href="{$value.real_url}"><span class="linkurl" title="Short link">{$value.url}</span></a><br>
                 {if="$value.tags"}
                     <div class="linktaglist">
-                    {loop="value.taglist"}<span class="linktag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value|htmlspecialchars}</a></span> {/loop}
+                    {loop="value.taglist"}<span class="linktag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value}</a></span> {/loop}
                     </div>
                 {/if}
+
+
             </div>
         </li>
     {/loop}
     </ul>
 
+    <div id="plugin_zone_end_linklist" class="plugin_zone">
+        {loop="$plugin_end_zone"}
+            {$value}
+        {/loop}
+    </div>
+
     {include="linklist.paging"}
 
 </div>
 
-    {include="page.footer"} 
+    {include="page.footer"}
 
-<script language="JavaScript">
-// Remove any displayed QR-Code
-function remove_qrcode()
-{ 
-    var elem = document.getElementById("permalinkQrcode");
-    if (elem) elem.parentNode.removeChild(elem);
-    return false;
-}
-
-// Show the QR-Code of a permalink (when the QR-Code icon is clicked).
-function showQrCode(caller,loading=false)
-{ 
-    // Dynamic javascript lib loading: We only load qr.js if the QR code icon is clicked:
-    if (typeof(qr)=='undefined') // Load qr.js only if not present.
-    {
-        if (!loading)  // If javascript lib is still loading, do not append script to body.
-        {
-            var element = document.createElement("script");
-            element.src = "inc/qr.min.js";
-            document.body.appendChild(element);
-        }
-        setTimeout(function() { showQrCode(caller,true);}, 200); // Retry in 200 milliseconds.
-        return false;
-    }
-
-    // Remove previous qrcode if present.
-    remove_qrcode();
-    
-    // Build the div which contains the QR-Code:
-    var element = document.createElement('div');
-    element.id="permalinkQrcode";
-	// Make QR-Code div commit sepuku when clicked:
-    if ( element.attachEvent ){ element.attachEvent('onclick', 'this.parentNode.removeChild(this);' ); } // Damn IE
-    else { element.setAttribute('onclick', 'this.parentNode.removeChild(this);' ); }
-    
-    // Build the QR-Code:
-    var image = qr.image({size: 8,value: caller.dataset.permalink});
-    if (image)
-    { 
-        element.appendChild(image);
-        element.innerHTML+= "<br>Click to close";
-        caller.parentNode.appendChild(element);
-    }
-    else
-    {
-        element.innerHTML="Your browser does not seem to be HTML5 compatible.";
-    }
-    return false;
-}
+<script src="inc/awesomplete.min.js#"></script>
+<script src="inc/awesomplete-multiple-tags.js#"></script>
+<script>
+    awesompleteUniqueTag('#tagfilter_value');
 </script>
 </body>
 </html>
