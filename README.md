@@ -1,71 +1,114 @@
-![Shaarli logo](http://sebsauvage.net/wiki/lib/exe/fetch.php?media=php:php_shaarli:php_shaarli_logo_inkscape_w600_transp-nq8.png)
+![Shaarli logo](doc/images/doc-logo.png)
 
-Shaarli, the personal, minimalist, super-fast, no-database delicious clone.
+The personal, minimalist, super-fast, database free, bookmarking service.
 
-You want to share the links you discover ? Shaarli is a minimalist delicious clone you can install on your own website.
-It is designed to be personal (single-user), fast and handy. 
+_Do you want to share the links you discover?_
+_Shaarli is a minimalist delicious clone that you can install on your own server._
+_It is designed to be personal (single-user), fast and handy._
+
+[![](https://img.shields.io/travis/shaarli/Shaarli.svg?label=master)](https://travis-ci.org/shaarli/Shaarli)
+[![](https://img.shields.io/travis/shaarli/Shaarli/stable.svg?label=stable)](https://travis-ci.org/shaarli/Shaarli)
+[![](https://img.shields.io/github/release/shaarli/shaarli.svg)](https://github.com/shaarli/Shaarli/releases/latest/)
+[![Docker repository](https://img.shields.io/docker/pulls/shaarli/shaarli.svg)](https://hub.docker.com/r/shaarli/shaarli/)
+
+[![Join the chat at https://gitter.im/shaarli/Shaarli](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/shaarli/Shaarli)
+[![Bountysource](https://www.bountysource.com/badge/team?team_id=19583&style=bounties_received)](https://www.bountysource.com/teams/shaarli/issues)
+
+## Quickstart
+- [Wiki/documentation](https://github.com/shaarli/Shaarli/wiki)
+- [Bugs/Feature requests/Discussion](https://github.com/shaarli/Shaarli/issues/)
+
+### Demo
+You can use this [public demo instance of Shaarli](http://shaarlidemo.tuxfamily.org/Shaarli).
+It runs the latest development version of Shaarli and is updated/reset daily.
+
+Login: `demo`; Password: `demo`
+
+### Installation & upgrade
+- [Download and installation](https://github.com/shaarli/Shaarli/wiki/Download-and-Installation)
+- [Upgrade and migration](https://github.com/shaarli/Shaarli/wiki/Upgrade-and-migration)
+- [Server requirements](https://github.com/shaarli/Shaarli/wiki/Server-requirements)
+- [Server configuration](https://github.com/shaarli/Shaarli/wiki/Server-configuration)
+- [Shaarli configuration](https://github.com/shaarli/Shaarli/wiki/Shaarli-configuration)
+
+## Features
+### Interface
+- minimalist design (simple is beautiful)
+- FAST
+- ATOM and RSS feeds
+- views:
+    - paginated link list
+    - tag cloud
+    - picture wall: image and video thumbnails
+    - daily: newspaper-like daily digest
+    - daily RSS feed
+- permalinks for easy reference
+- links can be public or private
+- extensible through [plugins](https://github.com/shaarli/Shaarli/wiki/Plugins#plugin-usage)
+
+### Tag, view and search your links!
+- add a custom title and description to archived links
+- add tags to classify and search links
+    - features tag autocompletion, renaming, merging and deletion
+- full-text and tag search
+
+### Easy setup
+- dead-simple installation: drop the files, open the page
+- links are stored in a file
+    - compact storage
+    - no database required
+    - easy backup: simply copy the datastore file
+- import and export links as Netscape bookmarks
+
+### Accessibility
+- Firefox bookmarlet to share links in one click
+- support for mobile browsers
+- works with Javascript disabled
+- easy page customization through HTML/CSS/RainTPL
+
+### Security
+- bruteforce-proof login form
+- protected against [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
+and session cookie hijacking
+
+### Goodies
+- thumbnail generation for images and video services:
+dailymotion, flickr, imageshack, imgur, vimeo, xkcd, youtube...
+    - lazy-loading with [bLazy](http://dinbror.dk/blazy/)
+- [PubSubHubbub](https://code.google.com/p/pubsubhubbub/) protocol support
+- URL cleanup: automatic removal of `?utm_source=...`, `fb=...`
+- discreet pop-up notification when a new release is available
+
+### Other usages
+Though Shaarli is primarily a bookmarking application, it can serve other purposes
+(see [usage examples](https://github.com/shaarli/Shaarli/wiki#usage-examples)):
+- micro-blogging
+- pastebin
+- online notepad
+- snippet archive
+
+## About
+### Shaarli community fork
+This friendly fork is maintained by the Shaarli community at https://github.com/shaarli/Shaarli
+
+This is a community fork of the original [Shaarli](https://github.com/sebsauvage/Shaarli/) project by [Sébastien Sauvage](http://sebsauvage.net/).
+
+The original project is currently unmaintained, and the developer [has informed us](https://github.com/sebsauvage/Shaarli/issues/191)
+that he would have no time to work on Shaarli in the near future.
+The Shaarli community has carried on the work to provide
+[many patches](https://github.com/shaarli/Shaarli/compare/sebsauvage:master...master)
+for [bug fixes and enhancements](https://github.com/shaarli/Shaarli/issues?q=is%3Aclosed+)
+in this repository, and will keep maintaining the project for the foreseeable future, while keeping Shaarli simple and efficient.
+
+### Contributing
+If you'd like to help, please:
+- have a look at the open [issues](https://github.com/shaarli/Shaarli/issues)
+and [pull requests](https://github.com/shaarli/Shaarli/pulls)
+- feel free to report bugs (feedback is much appreciated)
+- suggest new features and improvements to both code and [documentation](https://github.com/shaarli/Shaarli/wiki)
+- propose solutions to existing problems
+- submit pull requests :-)
 
 
-Features:
-
- * Minimalist design (simple is beautiful)
- * **FAST**
- * Dead-simple installation: Drop the files, open the page. No database required.
- * Easy to use: Single button in your browser to bookmark a page
- * Save url, title, description (unlimited size). Classify links with tags (with autocomplete)
- * Tag renaming, merging and deletion.
- * Automatic thumbnails for various services (imgur, imageshack.us, flickr, youtube, vimeo, dailymotion…)
- * Automatic conversion of URLs to clickable links in descriptions. Support for http/ftp/file/apt/magnet protocols.
- * Save links as public or private
- * 1-clic access to your private links/notes
- * Browse links by page, filter by tag or use the full text search engine
- * Permalinks (with QR-Code) for easy reference
- * RSS and ATOM feeds (which can be filtered by tag or text search)
- * Tag cloud
- * Picture wall (which can be filtered by tag or text search)
- * “Links of the day” Newspaper-like digest, browsable by day.
- * “Daily” RSS feed: Get each day a digest of all new links.
- * [PubSubHubbub](https://code.google.com/p/pubsubhubbub/) protocol support
- * Easy backup (Data stored in a single file)
- * Compact storage (1315 links stored in 150 kb)
- * Mobile browsers support
- * Also works with javascript disabled
- * Can import/export Netscape bookmarks (for import/export from/to Firefox, Opera, Chrome, Delicious…)
- * Brute force protected login form
- * Protected against [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery), session cookie hijacking.
- * Automatic removal of annoying FeedBurner/Google FeedProxy parameters in URL (?utm_source…)
- * Shaarli is a bookmarking application, but you can use it for micro-blogging (like Twitter), a pastebin, an online notepad, a snippet repository, etc.
- * You will be automatically notified by a discreet popup if a new version is available
- * Pages are easy to customize (using CSS and simple RainTPL templates)
-
-
-Requires php 5.1
-
-More information on the project page:
-http://sebsauvage.net/wiki/doku.php?id=php:shaarli
-
-------------------------------------------------------------------------------
-
-Shaarli is distributed under the zlib/libpng License:
-
-Copyright (c) 2011 Sébastien SAUVAGE (sebsauvage.net)
-
-This software is provided 'as-is', without any express or implied warranty.
-In no event will the authors be held liable for any damages arising from
-the use of this software.
-
-Permission is granted to anyone to use this software for any purpose,
-including commercial applications, and to alter it and redistribute it 
-freely, subject to the following restrictions:
-
-  1. The origin of this software must not be misrepresented; you must not 
-     claim that you wrote the original software. If you use this software
-     in a product, an acknowledgment in the product documentation would
-     be appreciated but is not required.
-
-  2. Altered source versions must be plainly marked as such, and must
-     not be misrepresented as being the original software.
-
-  3. This notice may not be removed or altered from any source distribution.
-
-------------------------------------------------------------------------------
+### License
+Shaarli is [Free Software](http://en.wikipedia.org/wiki/Free_software). See [COPYING](COPYING) for a detail of the contributors and licenses for each individual component.
