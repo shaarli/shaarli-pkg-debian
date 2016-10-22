@@ -2,6 +2,7 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Shaarli
 Upstream-Contact: Sébastien Sauvage <sebsauvage@sebsauvage.net>
 Source: http://sebsauvage.net/wiki/doku.php?id=php:shaarli
+Files-Excluded: inc/rain.tpl.class.php plugins/playvideos/jquery-1.11.2*.js
 
 Files: *
 Copyright: 2011-2012, Sébastien Sauvage <sebsauvage@sebsauvage.net>
