@@ -1,0 +1,22 @@
+{
+    "name": "shaarli/shaarli",
+    "description": "The personal, minimalist, super-fast, database-free bookmarking service",
+    "type": "project",
+    "license": "MIT",
+    "homepage": "https://github.com/shaarli/Shaarli",
+    "support": {
+        "issues": "https://github.com/shaarli/Shaarli/issues",
+        "wiki": "https://github.com/shaarli/Shaarli/wiki"
+    },
+    "keywords": ["bookmark", "link", "share", "web"],
+    "require": {
+        "php": ">=5.3.4",
+        "shaarli/netscape-bookmark-parser": "1.*"
+    },
+    "require-dev": {
+        "phpmd/phpmd" : "@stable",
+        "phpunit/phpunit": "4.8.*",
+        "sebastian/phpcpd": "*",
+        "squizlabs/php_codesniffer": "2.*"
+    }
+}

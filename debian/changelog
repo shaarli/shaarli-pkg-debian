@@ -1,3 +1,13 @@
+shaarli (0.8.0~dfsg1-1) UNRELEASED; urgency=medium
+
+  * Fix some issues in upstream release download script.
+  * Drop obsolete patches.
+  * Update php dependencies.
+  * Update remaining patches.
+  * New upstream version.
+
+ -- James Valleroy <jvalleroy@mailbox.org>  Sat, 22 Oct 2016 15:21:35 -0400
+
 shaarli (0.0.42~beta~dfsg1-2) unstable; urgency=low
 
   * Fix permissions on cache and data folders (Closes: #773039)
